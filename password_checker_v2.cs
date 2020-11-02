@@ -2,25 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Net;
 using System.Threading.Tasks;
 
-namespace strong_password_2
+namespace strong_password_v2
 {
     class Program
     {
         static void Main(string[] args)
         {
+            
+            //stating all the variables
             string passcode;
-            string[] message = new string[5];
+            string[] message = new string[5]; //creating the error message array
             bool lenght = false;
             bool lower_letter = false;
             bool upper_letter = false;
             bool digit = false;
             bool symbol = false;
             bool strong = false;
+            
+            //console asking for user input
 
             Console.WriteLine("enter your new passcode");
             passcode = Console.ReadLine();
+            
+            //filtering system
 
             if (passcode.Length >= 8 && passcode.Length <= 50) //check for lenght (over 8 characters-change the "8" after the passcode.Lenght)
             {
@@ -58,7 +65,7 @@ namespace strong_password_2
                 }
             }
 
-            for (int i = 0; i < passcode.Length; i++) //check for symbols
+            for (int i = 0; i < passcode.Length; i++) //check for symbols (not all symbols get pass through this filter)
             {
                 if (Char.IsSymbol(passcode[i]))
                 {
@@ -67,7 +74,7 @@ namespace strong_password_2
                 }
             }
 
-            strong = symbol && lower_letter && upper_letter && digit && symbol && lenght;
+            strong = symbol && lower_letter && upper_letter && digit && symbol && lenght; //check if the string passes inspection
 
             //passcode error messages handler
 
@@ -93,6 +100,8 @@ namespace strong_password_2
             }
 
 
+            //console output
+            
             if (strong)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
